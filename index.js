@@ -22,7 +22,7 @@ addEventListener("update", event => {});
 let ctx;
 let initialized = false;
 // Wenn die Webseite fertig geladen wurde
-function gameInit() {
+window.onload = () => {
   if (initialized) {
     return;
   }
@@ -37,7 +37,7 @@ function gameInit() {
 
   ctx.canvas.width = WIDTH * TILE_SIZE;
   ctx.canvas.height = HEIGHT * TILE_SIZE;
-}
+};
 
 checkLoaded();
 function checkLoaded() {
@@ -46,7 +46,7 @@ function checkLoaded() {
   }
 
   if (document.getElementById("canvas")) {
-    gameInit();
+    //gameInit();
   } else {
     setTimeout(checkLoaded, 15);
   }
