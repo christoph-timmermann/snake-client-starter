@@ -22,7 +22,7 @@ addEventListener("update", event => {});
 let ctx;
 let initialized = false;
 // Wenn die Webseite fertig geladen wurde
-window.onload = () => {
+function gameInit() {
   if (initialized) {
     return;
   }
@@ -35,9 +35,10 @@ window.onload = () => {
   const canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
 
+  canvas.style.backgroundColor = "lightgrey";
   ctx.canvas.width = WIDTH * TILE_SIZE;
   ctx.canvas.height = HEIGHT * TILE_SIZE;
-};
+}
 
 checkLoaded();
 function checkLoaded() {
@@ -46,7 +47,7 @@ function checkLoaded() {
   }
 
   if (document.getElementById("canvas")) {
-    //gameInit();
+    gameInit();
   } else {
     setTimeout(checkLoaded, 15);
   }
