@@ -23,6 +23,9 @@ let ctx;
 let initialized = false;
 // Wenn die Webseite fertig geladen wurde
 function gameInit() {
+  if (initialized) {
+    return;
+  }
   initialized = true;
 
   // Mit Name verbinden
@@ -38,7 +41,11 @@ function gameInit() {
 
 checkLoaded();
 function checkLoaded() {
-  if (document.getElementById("canvas") && !initialized) {
+  if (initialized) {
+    return;
+  }
+
+  if (document.getElementById("canvas")) {
     gameInit();
   } else {
     setTimeout(checkLoaded, 15);
