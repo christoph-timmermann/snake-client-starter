@@ -36,7 +36,7 @@ function gameInit() {
   ctx.canvas.height = HEIGHT * TILE_SIZE;
 }
 
-checkLoaded;
+checkLoaded();
 function checkLoaded() {
   if (document.getElementById("canvas") && !initialized) {
     gameInit();
