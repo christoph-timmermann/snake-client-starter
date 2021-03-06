@@ -22,12 +22,7 @@ addEventListener("update", event => {});
 let ctx;
 let initialized = false;
 // Wenn die Webseite fertig geladen wurde
-function gameInit() {
-  if (initialized) {
-    return;
-  }
-  initialized = true;
-
+window.onload = () => {
   // Mit Name verbinden
   init("Spieler");
 
@@ -38,19 +33,6 @@ function gameInit() {
   canvas.style.backgroundColor = "lightgrey";
   ctx.canvas.width = WIDTH * TILE_SIZE;
   ctx.canvas.height = HEIGHT * TILE_SIZE;
-}
-
-checkLoaded();
-function checkLoaded() {
-  if (initialized) {
-    return;
-  }
-
-  if (document.getElementById("canvas")) {
-    gameInit();
-  } else {
-    setTimeout(checkLoaded, 15);
-  }
 }
 
 // Funktionen zum Zeichnen
