@@ -1,5 +1,3 @@
-import { init, login, setDirection } from "./network.js";
-
 const WIDTH = 50; // Breite des Spielfelds
 const HEIGHT = 50; // Höhe des Spielfelds
 const TILE_SIZE = 16; // Größe einer Kachel in Pixeln
@@ -8,19 +6,18 @@ const Direction = {
   UP: 0,
   RIGHT: 1,
   DOWN: 2,
-  LEFT: 3
+  LEFT: 3,
 };
 
 // Wenn der Netzwerk-Client verbunden hat
-addEventListener("connect", event => {
+addEventListener("connect", (event) => {
   login("MYROOM");
 });
 
 // Wenn sich der Zustand des Spiels ändert
-addEventListener("update", event => {});
+addEventListener("update", (event) => {});
 
 let ctx;
-let initialized = false;
 // Wenn die Webseite fertig geladen wurde
 window.onload = () => {
   // Mit Name verbinden
@@ -33,7 +30,7 @@ window.onload = () => {
   canvas.style.backgroundColor = "lightgrey";
   ctx.canvas.width = WIDTH * TILE_SIZE;
   ctx.canvas.height = HEIGHT * TILE_SIZE;
-}
+};
 
 // Funktionen zum Zeichnen
 function fillTile(x, y, color) {

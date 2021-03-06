@@ -1,7 +1,7 @@
 let webSocket;
 
 // Diese Funktion muss vor allen anderen ausgeführt werden
-export function init(name) {
+function init(name) {
   webSocket = new WebSocket("ws://snake.ah-oh.com");
 
   webSocket.onerror = (socket, event) => {
@@ -42,11 +42,11 @@ export function init(name) {
 }
 
 // Mit dieser Funktion kann man sich in einen Raum anmelden
-export function login(roomId) {
+function login(roomId) {
   webSocket.send(JSON.stringify({ type: "login", roomId: roomId }));
 }
 
 // Mit dieser Funktion kann die Richtung geändert werden
-export function setDirection(direction) {
+function setDirection(direction) {
   webSocket.send(JSON.stringify({ type: "direction", direction: direction }));
 }
