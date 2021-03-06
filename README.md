@@ -2,6 +2,12 @@
 
 ## Startseite mit Namensfeld
 
+Zum Server verbinden:
+
+```javascript
+init("Spielername");
+```
+
 ## Raumübersicht, Neuer Raum oder Raum beitreten
 
 connect-Event:
@@ -10,6 +16,12 @@ connect-Event:
 event.detail = {
   rooms: [string],
 };
+```
+
+In Raum beitreten/Raum erstellen:
+
+```javascript
+login("Raum-ID");
 ```
 
 ## Spielansicht
@@ -45,6 +57,10 @@ event.detail = {
 ```
 
 ## Nutzereingaben (Pfeiltasten)
+
+```javascript
+setDirection(Direction.UP);
+```
 
 ## Spieler darstellen
 
