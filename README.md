@@ -18,29 +18,29 @@ update-Event:
 
 ```json
 event.detail = {
-players: [
-{
-color: string,
-direction: Direction (0-3 number)
-id: number,
-name: string,
-score: number,
-tail: [
-{
-x: number,
-y: number
-}
-],
-x: number,
-y: number
-}
-],
-room: {
-apple: {
-x: number,
-y: number
-}
-}
+    players: [
+    {
+        color: string,
+        direction: Direction (0-3 number)
+        id: number,
+        name: string,
+        score: number,
+        tail: [
+                {
+                    x: number,
+                    y: number
+                }
+            ],
+        x: number,
+        y: number
+    }
+    ],
+    room: {
+            apple: {
+            x: number,
+            y: number
+        }
+    }
 }
 ```
 
