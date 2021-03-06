@@ -2,7 +2,7 @@ let webSocket;
 
 // Diese Funktion muss vor allen anderen ausgeführt werden
 export function init(name) {
-  webSocket = new WebSocket("ws://localhost:5000");
+  webSocket = new WebSocket("ws://snake.ah-oh.com");
 
   webSocket.onerror = (socket, event) => {
     console.error(event);
@@ -15,7 +15,7 @@ export function init(name) {
   };
 
   // Wenn eine Nachricht vom Server kommt
-  webSocket.onmessage = message => {
+  webSocket.onmessage = (message) => {
     const data = JSON.parse(message.data);
 
     switch (data.type) {
