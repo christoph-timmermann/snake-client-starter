@@ -5,13 +5,18 @@
 ## Raumübersicht, Neuer Raum oder Raum beitreten
 
 connect-Event:
-event.detail = {
-rooms: [string]
-}
+
+```json
+(event.detail = {
+  "rooms": [string]
+})
+```
 
 ## Spielansicht
 
 update-Event:
+
+```json
 event.detail = {
 players: [
 {
@@ -37,6 +42,7 @@ y: number
 }
 }
 }
+```
 
 ## Nutzereingaben (Pfeiltasten)
 
@@ -51,3 +57,7 @@ y: number
 ## Spielernamen anzeigen
 
 ## Eingaben begrenzen (nur nach links/rechts wechseln)
+
+```
+
+```
