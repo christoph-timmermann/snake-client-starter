@@ -33,7 +33,15 @@ function logKey(e) {
 
 // Wenn der Netzwerk-Client verbunden hat
 addEventListener("connect", (event) => {
-  addElement(event.detail.rooms);
+  try {
+    addElement(event.detail.rooms);
+  } catch (err) {}
+
+  if (ctx) {
+    const roomId = sessionStorage.getItem("roomId");
+    login(roomId);
+    document.getElementById("title").textContent += ' (Raum "' + roomId + '")';
+  }
 });
 
 addEventListener("music", (event) => {

@@ -51,7 +51,6 @@ function init(name) {
 // Mit dieser Funktion kann man sich in einen Raum anmelden
 function login(roomId) {
   webSocket.send(JSON.stringify({ type: "login", roomId: roomId }));
-  window.location.href = "/game.html";
 }
 
 // Mit dieser Funktion kann die Richtung geändert werden

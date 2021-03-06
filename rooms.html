@@ -85,7 +85,8 @@
       }
       function createRoom() {
         var roomname = document.getElementById("newroom");
-        login(roomname.value);
+        sessionStorage.setItem("roomId", roomname.value);
+        window.location.href = "/game.html";
       }
       function addElement(rooms) {
         console.log("addElement");
@@ -110,7 +111,8 @@
           currentDiv.appendChild(nextDiv);
 
           newButton.addEventListener("click", function () {
-            login(rooms[i]);
+            sessionStorage.setItem("roomId", rooms[i]);
+            window.location.href = "/game.html";
           });
         }
       }
