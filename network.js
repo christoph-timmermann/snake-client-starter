@@ -18,7 +18,6 @@ function init(name) {
   // Wenn eine Nachricht vom Server kommt
   webSocket.onmessage = (message) => {
     const data = JSON.parse(message.data);
-    console.log(data);
 
     switch (data.type) {
       // Wenn die Verbindung hergestellt wird
