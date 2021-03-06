@@ -12,6 +12,25 @@ const Direction = {
 const buffers = [];
 const songs = [];
 
+window.addEventListener("keydown", logKey);
+function logKey(e) {
+  if (e) {
+    const press = e.keyCode;
+    if (press === 38) {
+      setDirection(Direction.UP);
+    }
+    if (press === 40) {
+      setDirection(Direction.DOWN);
+    }
+    if (press === 37) {
+      setDirection(Direction.LEFT);
+    }
+    if (press === 39) {
+      setDirection(Direction.RIGHT);
+    }
+  }
+}
+
 // Wenn der Netzwerk-Client verbunden hat
 addEventListener("connect", (event) => {
   addElement(event.detail.rooms);
@@ -56,7 +75,33 @@ addEventListener("music", (event) => {
 
 // Wenn sich der Zustand des Spiels ändert
 addEventListener("update", (event) => {
-  setDirection(Direction.DOWN);
+  if (ctx === null) {
+    return;
+  }
+
+  ctx.font = "30px Arial";
+  clearCanvas();
+  for (i = 0; i < event.detail.players.length; i++) {
+    ctx.fillStyle = event.detail.players[i].color;
+    ctx.fillText(
+      `${event.detail.players[i].name} (${event.detail.players[i].score})`,
+      event.detail.players[i].x * TILE_SIZE,
+      event.detail.players[i].y * TILE_SIZE
+    );
+    fillTile(
+      event.detail.players[i].x,
+      event.detail.players[i].y,
+      event.detail.players[i].color
+    );
+    for (z = 0; z < event.detail.players[i].tail.length; z++) {
+      fillTile(
+        event.detail.players[i].tail[z].x,
+        event.detail.players[i].tail[z].y,
+        event.detail.players[i].color
+      );
+    }
+  }
+  fillTile(event.detail.room.apple.x, event.detail.room.apple.y, "green");
 });
 
 let ctx;
@@ -67,6 +112,7 @@ window.onload = () => {
   if (user) {
     init(user);
   }
+
   // Canvas
   const canvas = document.getElementById("canvas");
   if (canvas) {
