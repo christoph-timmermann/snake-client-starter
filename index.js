@@ -96,7 +96,7 @@ addEventListener("update", (event) => {
       fillTile(
         event.detail.players[i].tail[z].x,
         event.detail.players[i].tail[z].y,
-        "red"
+        event.detail.players[i].color
       );
     }
   }
