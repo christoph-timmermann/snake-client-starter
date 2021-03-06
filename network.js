@@ -4,7 +4,7 @@ let userReady = false;
 // Diese Funktion muss vor allen anderen ausgeführt werden
 function init(name) {
   //webSocket = new WebSocket("ws://localhost:5000");
-  webSocket = new WebSocket("ws://snake.ah-oh.com");
+  webSocket = new WebSocket("ws://snake.ah-oh.com/api");
 
   webSocket.onerror = (socket, event) => {
     console.error(event);
