@@ -6,17 +6,17 @@
 
 connect-Event:
 
-```json
-(event.detail = {
-  "rooms": [string]
-})
+```javascript
+event.detail = {
+  rooms: [string],
+};
 ```
 
 ## Spielansicht
 
 update-Event:
 
-```json
+```javascript
 event.detail = {
     players: [
     {
