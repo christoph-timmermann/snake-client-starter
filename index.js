@@ -32,7 +32,7 @@ addEventListener("music", (event) => {
     buffers.push(bytes.buffer);
 
     const song = document.createElement("button");
-    musicList.appendChild(song);
+    musicList.append(song);
     song.className = "song";
     song.innerHTML = "Song " + (index + 1);
 
@@ -46,6 +46,9 @@ addEventListener("music", (event) => {
 
       XMPlayer.load(buffers[index]);
       XMPlayer.play();
+      const pause = document.getElementById("pause");
+      pause.innerHTML = "Pause";
+      pause.style.display = "block";
     });
   }
 });
@@ -80,7 +83,14 @@ window.onload = () => {
 
 function stopMusic() {
   if (XMPlayer) {
-    XMPlayer.pause();
+    const pause = document.getElementById("pause");
+    if (!XMPlayer.playing) {
+      XMPlayer.play();
+      pause.innerHTML = "Pause";
+    } else {
+      XMPlayer.pause();
+      pause.innerHTML = "Play";
+    }
   }
 }
 

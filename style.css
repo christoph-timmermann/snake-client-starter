@@ -29,6 +29,8 @@ button {
   margin-top: 25px;
   border: none;
   border-radius: 2px;
+  cursor: pointer;
+  outline: none;
 }
 
 button:hover {
@@ -46,4 +48,23 @@ input {
 input[type="text"] {
   box-sizing: border-box;
   padding-left: 15px;
+}
+
+#music-list {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+
+.song {
+  background-color: rgb(160, 214, 250);
+}
+
+#pause {
+  background-color: rgb(245, 143, 143);
+  display: none;
+}
+
+.headline {
+  color: black;
 }
