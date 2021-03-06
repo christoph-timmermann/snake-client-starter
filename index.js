@@ -14,7 +14,6 @@ const songs = [];
 
 // Wenn der Netzwerk-Client verbunden hat
 addEventListener("connect", (event) => {
-  console.log(event.detail);
   login("MYROOM");
 });
 
@@ -53,7 +52,6 @@ addEventListener("music", (event) => {
 
 // Wenn sich der Zustand des Spiels ändert
 addEventListener("update", (event) => {
-  console.log(event.detail);
   setDirection(Direction.DOWN);
 });
 
