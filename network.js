@@ -29,7 +29,7 @@ function init(name) {
 
       // Wenn ein Raum betreten wurde
       case "login":
-        console.log(`You are now logged into room ${data.roomId}.`);
+        console.log(`You are now logged into room ${data.room.id}.`);
         break;
 
       // Wenn Spielerdaten empfangen wurden
