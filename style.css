@@ -2,3 +2,48 @@
   display: block;
   margin-bottom: 15px;
 }
+
+body {
+  background: #f1f2f6;
+  font-family: Fredoka One;
+  color: white;
+}
+
+.login {
+  background-color: #ff004d;
+  padding: 100px 50px;
+  text-align: center;
+  width: 500px;
+  margin: 100px auto;
+  border-radius: 8px;
+  box-shadow: 8px 8px 8px lightgrey;
+}
+
+button {
+  background-color: white;
+  height: 36px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+  margin: auto;
+  margin-top: 25px;
+  border: none;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: rgb(33, 35, 63);
+  color: white;
+}
+
+input {
+  border: none;
+  border-radius: 2px;
+  height: 36px;
+  width: 100%;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  padding-left: 15px;
+}

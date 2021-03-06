@@ -61,18 +61,23 @@ let ctx;
 // Wenn die Webseite fertig geladen wurde
 window.onload = () => {
   // Mit Name verbinden
-  init("Spieler");
-
+  const user = sessionStorage.getItem("user");
   // Canvas
   const canvas = document.getElementById("canvas");
-  ctx = canvas.getContext("2d");
+  console.log(user);
+  console.log(canvas);
+  if (user && canvas) {
+    init(user);
 
-  canvas.style.backgroundColor = "lightgrey";
-  ctx.canvas.width = WIDTH * TILE_SIZE;
-  ctx.canvas.height = HEIGHT * TILE_SIZE;
+    ctx = canvas.getContext("2d");
 
-  const pause = document.getElementById("pause");
-  pause.addEventListener("click", stopMusic);
+    canvas.style.backgroundColor = "lightgrey";
+    ctx.canvas.width = WIDTH * TILE_SIZE;
+    ctx.canvas.height = HEIGHT * TILE_SIZE;
+
+    const pause = document.getElementById("pause");
+    pause.addEventListener("click", stopMusic);
+  }
 };
 
 function stopMusic() {

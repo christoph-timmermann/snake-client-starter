@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
-	<meta charset="UTF-8" />
-
-	<script src="xm.js"></script>
-	<script src="xmeffects.js"></script>
-	<script src="network.js"></script>
-	<script src="index.js"></script>
-
-	<link href="style.css" rel="stylesheet" type="text/css">
-	</link>
+    <meta charset="UTF-8" />
+ 
+    <script src="network.js"></script>
+    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+ 
+    <link href="style.css" rel="stylesheet" type="text/css">
+    </link>
 </head>
-
+ 
 <body>
-	<h1>Snake</h1>
-	<canvas id="canvas"></canvas>
-	<div id="music-list"></div>
-	<div><button id="pause">Pause</button></div>
-	
+    <div class="login">
+    <h1>SNAKE</h1>
+    
+        <label for="Spielername"></label>
+        <input type="text" id="name" placeholder="Username eingeben">
+        
+        <button type="button"  onclick="alertInputValue()">Raum betreten</button>
+        
+     
+    <script type="text/javascript">
+         function alertInputValue(){
+            let name = document.getElementById('name').value;
+            sessionStorage.setItem('user', name);
+            window.location.href = '/game.html';
+        }
+        
+    </script>
+    </div>
 </body>
-
+ 
 </html>
