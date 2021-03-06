@@ -14,6 +14,18 @@ addEventListener("connect", (event) => {
   login("MYROOM");
 });
 
+addEventListener("music", (event) => {
+  var binary_string = window.atob(event.detail.arrayBuffer);
+  var len = binary_string.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) {
+    bytes[i] = binary_string.charCodeAt(i);
+  }
+
+  XMPlayer.init();
+  XMPlayer.load(bytes.buffer);
+});
+
 // Wenn sich der Zustand des Spiels ändert
 addEventListener("update", (event) => {});
 
@@ -22,6 +34,11 @@ let ctx;
 window.onload = () => {
   // Mit Name verbinden
   init("Spieler");
+  const musicButton = document.getElementById("music");
+  musicButton.addEventListener("click", playMusic);
+
+  const musicStopButton = document.getElementById("music-stop");
+  musicStopButton.addEventListener("click", stopMusic);
 
   // Canvas
   const canvas = document.getElementById("canvas");
@@ -31,6 +48,14 @@ window.onload = () => {
   ctx.canvas.width = WIDTH * TILE_SIZE;
   ctx.canvas.height = HEIGHT * TILE_SIZE;
 };
+
+function playMusic() {
+  XMPlayer.play();
+}
+
+function stopMusic() {
+  XMPlayer.pause();
+}
 
 // Funktionen zum Zeichnen
 function fillTile(x, y, color) {

@@ -2,7 +2,7 @@ let webSocket;
 
 // Diese Funktion muss vor allen anderen ausgeführt werden
 function init(name) {
-  webSocket = new WebSocket("ws://snake.ah-oh.com");
+  webSocket = new WebSocket("ws://localhost:5000");
 
   webSocket.onerror = (socket, event) => {
     console.error(event);
@@ -36,6 +36,10 @@ function init(name) {
       case "update":
         const onUpdate = new CustomEvent("update", { detail: data });
         dispatchEvent(onUpdate);
+        break;
+      case "music":
+        const onMusic = new CustomEvent("music", { detail: data });
+        dispatchEvent(onMusic);
         break;
     }
   };
