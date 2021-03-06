@@ -1,5 +1,6 @@
 let webSocket;
 
+let userReady = false;
 // Diese Funktion muss vor allen anderen ausgeführt werden
 function init(name) {
   //webSocket = new WebSocket("ws://localhost:5000");
@@ -44,11 +45,13 @@ function init(name) {
         break;
     }
   };
+  userReady = true;
 }
 
 // Mit dieser Funktion kann man sich in einen Raum anmelden
 function login(roomId) {
   webSocket.send(JSON.stringify({ type: "login", roomId: roomId }));
+  window.location.href = "/game.html";
 }
 
 // Mit dieser Funktion kann die Richtung geändert werden

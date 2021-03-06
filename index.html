@@ -7,30 +7,24 @@
     <script src="network.js"></script>
     <script src="index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
- 
     <link href="style.css" rel="stylesheet" type="text/css">
     </link>
 </head>
  
 <body>
     <div class="login">
-    <h1>SNAKE</h1>
-    
+        <h1>SNAKE</h1>
         <label for="Spielername"></label>
         <input type="text" id="name" placeholder="Username eingeben">
-        
         <button type="button"  onclick="alertInputValue()">Raum betreten</button>
-        
-     
-    <script type="text/javascript">
-         function alertInputValue(){
-            let name = document.getElementById('name').value;
-            sessionStorage.setItem('user', name);
-            window.location.href = '/game.html';
-        }
-        
-    </script>
     </div>
+    <script type="text/javascript">
+        function alertInputValue(){
+           let name = document.getElementById('name').value;
+           sessionStorage.setItem('user', name);
+           window.location.href = '/rooms.html';
+       }
+   </script>
 </body> 
  
 </html>

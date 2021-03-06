@@ -14,42 +14,43 @@ const songs = [];
 
 // Wenn der Netzwerk-Client verbunden hat
 addEventListener("connect", (event) => {
-  login("MYROOM");
+  addElement(event.detail.rooms);
 });
 
 addEventListener("music", (event) => {
   const musicList = document.getElementById("music-list");
+  if (musicList) {
+    XMPlayer.init();
 
-  XMPlayer.init();
-
-  for (var index = 0; index < event.detail.arrayBuffer.length; index++) {
-    var binary_string = window.atob(event.detail.arrayBuffer[index]);
-    var len = binary_string.length;
-    var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++) {
-      bytes[i] = binary_string.charCodeAt(i);
-    }
-    buffers.push(bytes.buffer);
-
-    const song = document.createElement("button");
-    musicList.append(song);
-    song.className = "song";
-    song.innerHTML = "Song " + (index + 1);
-
-    songs.push(song);
-  }
-  for (let index = 0; index < songs.length; index++) {
-    songs[index].addEventListener("click", function () {
-      if (XMPlayer) {
-        XMPlayer.stop();
+    for (var index = 0; index < event.detail.arrayBuffer.length; index++) {
+      var binary_string = window.atob(event.detail.arrayBuffer[index]);
+      var len = binary_string.length;
+      var bytes = new Uint8Array(len);
+      for (var i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
       }
+      buffers.push(bytes.buffer);
 
-      XMPlayer.load(buffers[index]);
-      XMPlayer.play();
-      const pause = document.getElementById("pause");
-      pause.innerHTML = "Pause";
-      pause.style.display = "block";
-    });
+      const song = document.createElement("button");
+      musicList.append(song);
+      song.className = "song";
+      song.innerHTML = "Song " + (index + 1);
+
+      songs.push(song);
+    }
+    for (let index = 0; index < songs.length; index++) {
+      songs[index].addEventListener("click", function () {
+        if (XMPlayer) {
+          XMPlayer.stop();
+        }
+
+        XMPlayer.load(buffers[index]);
+        XMPlayer.play();
+        const pause = document.getElementById("pause");
+        pause.innerHTML = "Pause";
+        pause.style.display = "block";
+      });
+    }
   }
 });
 
@@ -63,13 +64,12 @@ let ctx;
 window.onload = () => {
   // Mit Name verbinden
   const user = sessionStorage.getItem("user");
+  if (user) {
+    init(user);
+  }
   // Canvas
   const canvas = document.getElementById("canvas");
-  console.log(user);
-  console.log(canvas);
-  if (user && canvas) {
-    init(user);
-
+  if (canvas) {
     ctx = canvas.getContext("2d");
 
     canvas.style.backgroundColor = "lightgrey";
