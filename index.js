@@ -11,6 +11,7 @@ const Direction = {
 
 // Wenn der Netzwerk-Client verbunden hat
 addEventListener("connect", (event) => {
+  console.log(event.detail);
   login("MYROOM");
 });
 
@@ -27,7 +28,10 @@ addEventListener("music", (event) => {
 });
 
 // Wenn sich der Zustand des Spiels ändert
-addEventListener("update", (event) => {});
+addEventListener("update", (event) => {
+  console.log(event.detail);
+  setDirection(Direction.DOWN);
+});
 
 let ctx;
 // Wenn die Webseite fertig geladen wurde
