@@ -2,7 +2,8 @@ let webSocket;
 
 // Diese Funktion muss vor allen anderen ausgeführt werden
 function init(name) {
-  webSocket = new WebSocket("ws://localhost:5000");
+  //webSocket = new WebSocket("ws://localhost:5000");
+  webSocket = new WebSocket("ws://snake.ah-oh.com");
 
   webSocket.onerror = (socket, event) => {
     console.error(event);
@@ -29,7 +30,7 @@ function init(name) {
 
       // Wenn ein Raum betreten wurde
       case "login":
-        console.log(`You are now logged into room ${data.roomId}.`);
+        console.log(`You are now logged into room ${data.room.id}.`);
         break;
 
       // Wenn Spielerdaten empfangen wurden
