@@ -83,7 +83,7 @@ addEventListener("update", (event) => {
   for (i = 0; i < event.detail.players.length; i++) {
     ctx.fillStyle = event.detail.players[i].color;
     ctx.fillText(
-      event.detail.players[i].name,
+      `${event.detail.players[i].name} (${event.detail.players[i].score})`,
       event.detail.players[i].x * TILE_SIZE,
       event.detail.players[i].y * TILE_SIZE
     );
